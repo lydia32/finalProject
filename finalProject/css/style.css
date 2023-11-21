@@ -1,0 +1,78 @@
+body{
+	font-family:cursive;
+}
+figcaption{
+	font-variant:small-caps;
+	text-align:center;
+	font-size:larger;
+}
+h1, p{
+	padding-left:5%;
+}
+
+
+/* using a one column grid with a ten pixel gap between the rows and columns. */
+.grid{
+	display:grid;
+	grid-template-columns:90%;
+	grid-gap: 10px;
+	justify-content: space-evenly;
+}
+.grid img{
+	width:100%;
+	border: 10px solid #464445;
+
+}
+/* change the grid to be two columns once hitting 772 pixels. 
+	also change the border-radius so they have circular shapge instead of square.
+	finally, image number9 should take up both columns */
+@media screen and (min-width: 772px){
+	.grid{
+		grid-template-columns:45% 45%;
+		align-items:center;
+	}
+	.grid img{
+		border-radius:50%;
+	}
+	.grid figure:last-child{
+		grid-column:1 / span 2;
+	}
+}
+
+
+/* 992px still two columns, but every third image takes up both columns
+	and border-radius:0; */
+@media screen and (min-width:992px){
+	.grid{
+		grid-template-columns:45% 45%;
+		align-items:center;
+	}
+	.grid figure:nth-child(3n){
+		grid-column:1 / span 2;
+	}
+	.grid img{
+		border-radius:0;
+	}
+}
+
+
+/* stop the scrolling */
+@media (prefers-reduced-motion) {
+	*{
+	scroll-behavior:smooth;
+	}
+}
+
+
+/* different color schemes */
+@media (prefers-color-scheme: dark){
+	body{
+		background:#464445;
+		color:#f1f2f4;
+	}
+	.grid img{
+		border: 10px solid #f1f2f4;
+	}
+}
+
+
